@@ -1,22 +1,9 @@
-sudoku_board = [
-    [3, 0, 0, 4, 0, 6, 1, 0, 9],
-    [0, 5, 0, 0, 3, 1, 0, 4, 0],
-    [6, 0, 1, 2, 0, 9, 3, 0, 0],
-    [0, 0, 0, 3, 0, 0, 0, 6, 0],
-    [7, 9, 0, 0, 1, 2, 5, 0, 4],
-    [2, 0, 4, 0, 9, 5, 7, 0, 0],
-    [5, 0, 0, 1, 0, 0, 8, 0, 0],
-    [4, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 2, 0, 0, 0, 0]
-]
-
-
 def print_board(board):
     ''' Prints a visual of the sudoku board'''
     for i in range(len(board)):
         if i % 3 == 0 and i != 0:
             print("_____________________")
-        elif i != 0:
+        else:
             print("- - - - - - - - - - -")
         for j in range(len(board[i])):
             if j % 3 == 2 and j != 8:
@@ -87,7 +74,23 @@ def solve_board(board):
     return False
 
 
-print_board(sudoku_board)
-solve_board(sudoku_board)
-print("===================== \n")
-print_board(sudoku_board)
+def launcher():
+    ''' Launches the sudoku solver '''
+
+    print("Please enter the numbers of the sudoku board with a new line to separate the rows and spaces in between the numbers of the rows")
+    print("Please enter zeroes as empty spaces")
+    n = int(input("Enter the size of sudoku board: "))
+    print("Enter sudoku board: \n ")
+
+    board = [[int(num) for num in input().split()] for row in range(n)]
+
+    print("\n\n")
+    print("Sudoku Board")
+    print_board(board)
+    print("\n\n")
+    solve_board(board)
+    print("Solution")
+    print_board(board)
+
+
+launcher()
